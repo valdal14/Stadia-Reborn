@@ -1,9 +1,12 @@
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import NavBar from './components/NavBar/NavBar';
 
 function App() {
+
   return (
     <div className="App">
-      <h1>Welcome to STADIA</h1>
+      <NavBar />
     </div>
   );
 }
