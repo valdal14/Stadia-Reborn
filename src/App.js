@@ -15,15 +15,17 @@ function App(props) {
   };
 
   const configureModal = (value)=>{
-    setShowModal(true);
-    setModalConfigOption(value);
-    console.log(modalConfigOption);
+    if(value === 'contacts' || value === 'controller' || value === 'people'){
+      setShowModal(true);
+      setModalConfigOption(value);
+    }
   }
 
   return (
     <div className="App">
       <NavBar changeModalState={ (value)=> { configureModal(value)} }/>
-      <StadiaModal show={showModal} modalConfiguration={modalConfigOption} handleClose={ closeModal } />
+      { modalConfigOption !== 'default' && showModal ?  <StadiaModal show={showModal} modalConfiguration={modalConfigOption} handleClose={ closeModal } /> : null}
+     
     </div>
   );
 }

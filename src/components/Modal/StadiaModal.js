@@ -3,6 +3,22 @@ import './StadiaModal.css';
 
 const StadiaModal = (props)=> {
 
+    let bodyConfig = { text: '' }
+
+    switch (props.modalConfiguration) {
+      case 'contacts':
+        bodyConfig.text = 'Open Contact Modal';
+        break;
+      case 'controller':
+        bodyConfig.text = 'Open Controller Modal';
+        break;
+      case 'people':
+          bodyConfig.text = 'Open People Modal';
+          break;
+      default:
+        break;
+    }
+
     return (
       <>
         <Modal show={props.show} onHide={props.handleClose}>
@@ -10,7 +26,7 @@ const StadiaModal = (props)=> {
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            { props.modalConfigOption === 'contacts' ? 'Open Contact Modal' : 'Open default modal' }
+            { bodyConfig.text }
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={props.handleClose}>

@@ -23,7 +23,6 @@ const NavBar = (props) => {
     const requestModal = (e)=>{
       setModalType(e.target.id);
       props.changeModalState(modalType);
-      
     }
 
 
@@ -42,8 +41,8 @@ const NavBar = (props) => {
             {/* <FormControl type="text" placeholder="Search" className="mr-sm-2" />
             <Button variant="outline-success" className='buttonNav'>Search</Button> */}
             <NavBarContact openModalRequest={ requestModal } />
-            <NavBarController />
-            <NavBarPeople />
+            <NavBarController openModalRequest={ requestModal } />
+            <NavBarPeople openModalRequest={ requestModal } />
           </Form>
         </Navbar.Collapse>
       </Navbar>
