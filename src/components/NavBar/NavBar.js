@@ -10,6 +10,7 @@ import NavBarPeople from './NavBarPeople';
 const NavBar = (props) => {
 
     let [isActive, setIsActive] = useState('active');
+    let [modalType, setModalType] = useState('');
 
     const goHome = () => {
         window.location = '/public/index.html';
@@ -18,6 +19,12 @@ const NavBar = (props) => {
     const changeState = (e)=> {
         isActive ? setIsActive('') : setIsActive('active')
     };
+
+    const requestModal = (e)=>{
+      setModalType(e.target.id);
+      props.changeModalState(modalType);
+      
+    }
 
 
     return(
@@ -34,7 +41,7 @@ const NavBar = (props) => {
           <Form inline>
             {/* <FormControl type="text" placeholder="Search" className="mr-sm-2" />
             <Button variant="outline-success" className='buttonNav'>Search</Button> */}
-            <NavBarContact />
+            <NavBarContact openModalRequest={ requestModal } />
             <NavBarController />
             <NavBarPeople />
           </Form>

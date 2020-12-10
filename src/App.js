@@ -5,18 +5,25 @@ import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import StadiaModal from './components/Modal/StadiaModal';
 
-function App() {
+function App(props) {
 
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [modalConfigOption, setModalConfigOption] = useState('default');
 
   const closeModal = ()=> {
     setShowModal(false);
   };
 
+  const configureModal = (value)=>{
+    setShowModal(true);
+    setModalConfigOption(value);
+    console.log(modalConfigOption);
+  }
+
   return (
     <div className="App">
-      <NavBar />
-      <StadiaModal show={showModal} handleClose={ closeModal } />
+      <NavBar changeModalState={ (value)=> { configureModal(value)} }/>
+      <StadiaModal show={showModal} modalConfiguration={modalConfigOption} handleClose={ closeModal } />
     </div>
   );
 }
