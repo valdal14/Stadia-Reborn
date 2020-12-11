@@ -6,14 +6,14 @@ const StadiaModal = (props)=> {
     let bodyConfig = { text: '' }
 
     switch (props.modalConfiguration) {
-      case 'contacts':
+      case 'contact':
         bodyConfig.text = 'Open Contact Modal';
         break;
       case 'controller':
         bodyConfig.text = 'Open Controller Modal';
         break;
-      case 'people':
-          bodyConfig.text = 'Open People Modal';
+      case 'friends':
+          bodyConfig.text = 'Open Friends Modal';
           break;
       default:
         break;

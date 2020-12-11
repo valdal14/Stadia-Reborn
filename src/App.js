@@ -14,8 +14,10 @@ function App(props) {
     setShowModal(false);
   };
 
-  const configureModal = (value)=>{
-    if(value === 'contacts' || value === 'controller' || value === 'people'){
+  const configureModal = (e)=>{
+
+    const value = e.target.id;
+    if(value === 'contact' || value === 'controller' || value === 'friends'){
       setShowModal(true);
       setModalConfigOption(value);
     }
@@ -23,7 +25,7 @@ function App(props) {
 
   return (
     <div className="App">
-      <NavBar changeModalState={ (value)=> { configureModal(value)} }/>
+      <NavBar changeModalState={ configureModal }/>
       { modalConfigOption !== 'default' && showModal ?  <StadiaModal show={showModal} modalConfiguration={modalConfigOption} handleClose={ closeModal } /> : null}
      
     </div>

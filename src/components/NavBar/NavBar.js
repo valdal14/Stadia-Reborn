@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { Navbar, Nav, Image, Form, FormControl, Button } from 'react-bootstrap';
 import StadiaLogo from '../../images/stadia_logo_white.png';
+import ContactsImage from '../../images/email.png';
+import ControllerImage from '../../images/games.png';
+import FriendsImage from '../../images/group.png';
+
 import './NavBar.css';
 
-import NavBarContact from './NavBarContact';
-import NavBarController from './NavBarController';
-import NavBarPeople from './NavBarPeople';
+import NavBarItem from './NavBarItem';
 
 const NavBar = (props) => {
 
+    
     let [isActive, setIsActive] = useState('active');
-    let [modalType, setModalType] = useState('');
 
     const goHome = () => {
         window.location = '/public/index.html';
@@ -21,9 +23,21 @@ const NavBar = (props) => {
     };
 
     const requestModal = (e)=>{
-      setModalType(e.target.id);
-      props.changeModalState(modalType);
+      props.changeModalState(e);  
     }
+
+    const navbarMenuItems = [
+      {
+        img: <img src={ContactsImage} alt='contact' onClick={requestModal} id='contact' width="35" height="35" />
+      },
+      {
+        img: <img src={ControllerImage} alt='play' onClick={requestModal} id='controller' width="40" height="40" />
+      },
+      {
+        img: <img src={FriendsImage} alt='friends' onClick={requestModal} id='friends' width="35" height="35" />
+      }
+    ]
+
 
 
     return(
@@ -40,9 +54,9 @@ const NavBar = (props) => {
           <Form inline>
             {/* <FormControl type="text" placeholder="Search" className="mr-sm-2" />
             <Button variant="outline-success" className='buttonNav'>Search</Button> */}
-            <NavBarContact openModalRequest={ requestModal } />
-            <NavBarController openModalRequest={ requestModal } />
-            <NavBarPeople openModalRequest={ requestModal } />
+            <NavBarItem svgImage={navbarMenuItems[0].img} />
+            <NavBarItem svgImage={navbarMenuItems[1].img} />
+            <NavBarItem svgImage={navbarMenuItems[2].img} />
           </Form>
         </Navbar.Collapse>
       </Navbar>
