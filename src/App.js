@@ -4,8 +4,8 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import StadiaModal from './components/Modal/StadiaModal';
-import HomePage from './components/Pages/Home';
-import Store from './components/Pages/Store';
+import HomePage from './components/Pages/Home/Home';
+import Store from './components/Pages/Store/Store';
 
 function App(props) {
 

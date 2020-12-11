@@ -8,10 +8,10 @@ const Discount = (props)=> {
             <div className='col-2 col-sm-2 col-md-2'>
                 <img src={LabelImage} alt='discount' className='icon' />
             </div>
-            <div className='col-6 col-sm-6 col-md-6 message'>
+            <div className='col-8 col-sm-8 col-md-8 message'>
             You have €10 off your next game purchase
             </div>
-            <div className='col-4 col-sm-4 col-md-4 terms'>
+            <div className='col-2 col-sm-2 col-md-2 terms'>
             Terms apply
             </div>
         </div>
