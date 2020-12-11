@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Navbar, Nav, Image, Form, FormControl, Button } from 'react-bootstrap';
 import StadiaLogo from '../../images/stadia_logo_white.png';
-import ContactsImage from '../../images/email.png';
+import ContactsImage from '../../images/envelope.png';
 import ControllerImage from '../../images/games.png';
 import FriendsImage from '../../images/group.png';
+import UserImage from '../../images/user.png';
 
 import './NavBar.css';
 
@@ -13,13 +14,16 @@ const NavBar = (props) => {
 
     
     let [isActive, setIsActive] = useState('active');
+    let [page, setPage] = useState('Home');
 
     const goHome = () => {
         window.location = '/public/index.html';
     };
 
     const changeState = (e)=> {
+        setPage(e.target.text);
         isActive ? setIsActive('') : setIsActive('active')
+        props.changePageRender(e);
     };
 
     const requestModal = (e)=>{
@@ -35,6 +39,9 @@ const NavBar = (props) => {
       },
       {
         img: <img src={FriendsImage} alt='friends' onClick={requestModal} id='friends' width="35" height="35" />
+      },
+      {
+        img: <img src={UserImage} alt='user' onClick={requestModal} id='user' width="30" height="30" />
       }
     ]
 
@@ -45,11 +52,11 @@ const NavBar = (props) => {
         <Navbar.Brand>
             <Image src={ StadiaLogo } alt='Stadia' className='StadiaLogo' onClick={ goHome } />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link href="#home" className={ isActive } onClick={ changeState }>Home</Nav.Link>
-            <Nav.Link href="#link" onClick={ changeState }>Store</Nav.Link>
+            <Nav.Link href="#store" onClick={ changeState }>Store</Nav.Link>
           </Nav>
           <Form inline>
             {/* <FormControl type="text" placeholder="Search" className="mr-sm-2" />
@@ -57,6 +64,7 @@ const NavBar = (props) => {
             <NavBarItem svgImage={navbarMenuItems[0].img} />
             <NavBarItem svgImage={navbarMenuItems[1].img} />
             <NavBarItem svgImage={navbarMenuItems[2].img} />
+            <NavBarItem svgImage={navbarMenuItems[3].img} />
           </Form>
         </Navbar.Collapse>
       </Navbar>

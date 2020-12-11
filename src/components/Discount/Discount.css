@@ -1,0 +1,30 @@
+.discount {
+    border-radius: 5px;
+    background-color: #2D2E31;
+    color: white;
+}
+
+.icon {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    max-width: 50px;
+    max-height: 50px;
+    text-align: left;
+    float: left;
+}
+
+.message {
+    color: white;
+    margin: auto;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: 0.2em;
+}
+
+.terms {
+    text-align: right;
+    color: #FF773D;
+    margin: auto;
+}
+

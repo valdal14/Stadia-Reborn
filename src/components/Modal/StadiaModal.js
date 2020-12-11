@@ -15,6 +15,9 @@ const StadiaModal = (props)=> {
       case 'friends':
           bodyConfig.text = 'Open Friends Modal';
           break;
+      case 'user':
+        bodyConfig.text = 'Open User Modal';
+        break;
       default:
         break;
     }
@@ -22,19 +25,16 @@ const StadiaModal = (props)=> {
     return (
       <>
         <Modal show={props.show} onHide={props.handleClose}>
-          <Modal.Header closeButton>
+          {/* <Modal.Header closeButton>
             <Modal.Title>Modal heading</Modal.Title>
-          </Modal.Header>
+          </Modal.Header> */}
           <Modal.Body>
             { bodyConfig.text }
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={props.handleClose}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={props.handleClose}>
-              Save Changes
-            </Button>
+            <Button variant="outline-success" className='buttonNav' onClick={props.handleClose}>
+              Done
+            </Button> 
           </Modal.Footer>
         </Modal>
       </>
