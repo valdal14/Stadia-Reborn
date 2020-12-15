@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -12,6 +12,7 @@ function App(props) {
   const [showModal, setShowModal] = useState(false);
   const [modalConfigOption, setModalConfigOption] = useState('default');
   const [pageToShow, setPageToShow]= useState('Home');
+  const [isUserLogged, setIsUserLogged] = useState(false);
 
   const closeModal = ()=> {
     setShowModal(false);
@@ -30,13 +31,29 @@ function App(props) {
     setPageToShow(e.target.text);
   };
 
-  return (
-    <div className="App">
-      <NavBar changeModalState={ configureModal } changePageRender={pageToRender} />
-      { modalConfigOption !== 'default' && showModal ?  <StadiaModal show={showModal} modalConfiguration={modalConfigOption} handleClose={ closeModal } /> : null}
-      { pageToShow === 'Home' ? <HomePage /> : <Store />}
-    </div>
-  );
+  useEffect(() => {
+    if(isUserLogged) {
+      document.querySelector('#body').style.backgroundColor = '#202124';
+    } else {
+      document.querySelector('#body').style.backgroundColor = 'white';
+    }
+  });
+
+  if(isUserLogged) {
+    return (
+      <div className="App">
+        <NavBar changeModalState={ configureModal } changePageRender={pageToRender} />
+        { modalConfigOption !== 'default' && showModal ?  <StadiaModal show={showModal} modalConfiguration={modalConfigOption} handleClose={ closeModal } /> : null}
+        { pageToShow === 'Home' ? <HomePage /> : <Store />}
+      </div>
+    );
+  } else {
+    return(
+      <div className="App">
+        <h1>Welcome to Stadia</h1>
+      </div>
+    )
+  }
 }
 
 export default App;
