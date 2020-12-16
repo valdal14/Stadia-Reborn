@@ -1,0 +1,9 @@
+.jumbotron {
+    background-color: #202124 !important;
+    color: white;
+    text-align: left;
+}
+
+img {
+    max-width: 100%;
+}

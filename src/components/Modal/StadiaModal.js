@@ -1,9 +1,23 @@
-import { Modal, Button } from 'react-bootstrap';
+import React, { useState } from 'react';
+
+import { Modal, Button, Form } from 'react-bootstrap';
 import './StadiaModal.css';
+import StadiaLogo from '../../images/stadia-logo-white-modal.png'; 
 
 const StadiaModal = (props)=> {
 
-    let bodyConfig = { text: '' }
+    let [email, setEmail] = useState('valdal14@gmail.com');
+    let [pwd, setPwd] = useState('123456');
+
+    let bodyConfig = { text: {} }
+
+    const checkEmail = (e)=>{
+      setEmail(e.target.value);
+    }
+
+    const checkPassword = (e)=>{
+      setPwd(e.target.value);
+    }
 
     switch (props.modalConfiguration) {
       case 'contact':
@@ -18,6 +32,22 @@ const StadiaModal = (props)=> {
       case 'user':
         bodyConfig.text = 'Open User Modal';
         break;
+      case 'login':
+        bodyConfig.text = 
+          <Form>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control type="email" placeholder="Enter email" onChange={checkEmail} />
+            </Form.Group>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="password" placeholder="Password" onChange={checkPassword} />
+            </Form.Group>
+            <Button variant="outline-success" className='buttonNav' style={{float: 'right'}} onClick={props.performLogin.bind(null, email, pwd)}>
+              Login
+            </Button>
+          </Form>
+          break;
       default:
         break;
     }
@@ -25,17 +55,19 @@ const StadiaModal = (props)=> {
     return (
       <>
         <Modal show={props.show} onHide={props.handleClose}>
-          {/* <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
-          </Modal.Header> */}
+          <Modal.Header>
+            <Modal.Title>
+              <img src={StadiaLogo} alt='stadia' className='stadiaModalLogo' />
+            </Modal.Title>
+          </Modal.Header>
           <Modal.Body>
             { bodyConfig.text }
           </Modal.Body>
-          <Modal.Footer>
+          {/* <Modal.Footer>
             <Button variant="outline-success" className='buttonNav' onClick={props.handleClose}>
               Done
             </Button> 
-          </Modal.Footer>
+          </Modal.Footer> */}
         </Modal>
       </>
     );
