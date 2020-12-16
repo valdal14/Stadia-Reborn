@@ -6,17 +6,17 @@ import StadiaLogo from '../../images/stadia-logo-white-modal.png';
 
 const StadiaModal = (props)=> {
 
-    let [email, setEmail] = useState('valdal14@gmail.com');
-    let [pwd, setPwd] = useState('123456');
+    let [username, setUsername] = useState(null);
+    let [password, setPassword] = useState(null);
 
     let bodyConfig = { text: {} }
 
     const checkEmail = (e)=>{
-      setEmail(e.target.value);
+      setUsername(e.target.value);
     }
 
     const checkPassword = (e)=>{
-      setPwd(e.target.value);
+      setPassword(e.target.value);
     }
 
     switch (props.modalConfiguration) {
@@ -36,14 +36,14 @@ const StadiaModal = (props)=> {
         bodyConfig.text = 
           <Form>
             <Form.Group controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" onChange={checkEmail} />
+              <Form.Label>Username</Form.Label>
+              <Form.Control type="text" placeholder="Stadia username" onChange={checkEmail} />
             </Form.Group>
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" onChange={checkPassword} />
+              <Form.Control type="password" placeholder="Stadia password" onChange={checkPassword} />
             </Form.Group>
-            <Button variant="outline-success" className='buttonNav' style={{float: 'right'}} onClick={props.performLogin.bind(null, email, pwd)}>
+            <Button variant="outline-success" className='buttonNav' style={{float: 'right'}} onClick={props.performLogin.bind(null, username, password)}>
               Login
             </Button>
           </Form>

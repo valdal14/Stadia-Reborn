@@ -42,13 +42,39 @@ function App(props) {
     setPageToShow(e.target.text);
   };
 
-  const login = (email, pwd)=>{
-    // console.log(e);
-    // e.preventDefault();
-    console.log(email);
-    console.log(pwd);
-    setIsUserLogged(true);
+  const login = async (username, password)=>{
+
     setShowModal(false);
+
+    const endpoint = process.env.REACT_APP_DEV + '/login';
+
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password
+      })
+    }).then(response => {
+      return response.json();
+    }).then(data => {
+      if(data.response !== undefined) {
+        return data.response;
+      }
+    }).catch(error => {
+      console.log(error);
+      setShowModal(true);
+    })
+
+    if(response !== undefined){
+      console.log(response);
+      setIsUserLogged(true);
+    } else {
+      setShowModal(true);
+    }
+
   }
 
   useEffect(() => {
