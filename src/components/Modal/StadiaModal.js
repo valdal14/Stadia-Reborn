@@ -63,11 +63,11 @@ const StadiaModal = (props)=> {
           <Modal.Body>
             { bodyConfig.text }
           </Modal.Body>
-          {/* <Modal.Footer>
-            <Button variant="outline-success" className='buttonNav' onClick={props.handleClose}>
-              Done
-            </Button> 
-          </Modal.Footer> */}
+          { props.loginError !== null ? <Modal.Footer>
+            <div className='modalError'>
+              {props.loginError}
+            </div> 
+          </Modal.Footer> : null }
         </Modal>
       </>
     );

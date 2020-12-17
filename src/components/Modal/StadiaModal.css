@@ -24,3 +24,10 @@
     display: block;
     max-width: 20%;
 }
+
+.modalError {
+    color: red;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+}

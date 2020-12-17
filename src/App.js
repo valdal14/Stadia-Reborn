@@ -17,6 +17,7 @@ function App(props) {
 
   const [showModal, setShowModal] = useState(false);
   const [modalConfigOption, setModalConfigOption] = useState('default');
+  const [modalError, setModalError] = useState(null);
   const [pageToShow, setPageToShow]= useState('Home');
   const [isUserLogged, setIsUserLogged] = useState(false);
 
@@ -48,7 +49,7 @@ function App(props) {
 
     const endpoint = process.env.REACT_APP_DEV + '/login';
 
-    const response = await fetch(endpoint, {
+    const data = await fetch(endpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -60,18 +61,28 @@ function App(props) {
     }).then(response => {
       return response.json();
     }).then(data => {
-      if(data.response !== undefined) {
+
+      if(data.error){
+        setModalError(data.error);
+        setShowModal(true);
+        return;
+      } else {
         return data.response;
       }
+
     }).catch(error => {
       console.log(error);
+      setModalError(error);
       setShowModal(true);
+      return;
     })
 
-    if(response !== undefined){
-      console.log(response);
+    // logi success
+    if(data){
+      console.log(data);
       setIsUserLogged(true);
     } else {
+      setModalError('Invalid user credentials, please try again!!!');
       setShowModal(true);
     }
 
@@ -98,7 +109,7 @@ function App(props) {
       <div className="App">
         <NavBarDefault changeModalState={ openLoginModal } />
         <Banner changeModalState={ openLoginModal } />
-        { modalConfigOption !== 'default' && showModal ?  <StadiaModal performLogin={login} show={showModal} modalConfiguration={modalConfigOption} handleClose={ closeModal } /> : null}
+        { modalConfigOption !== 'default' && showModal ?  <StadiaModal loginError={modalError} performLogin={login} show={showModal} modalConfiguration={modalConfigOption} handleClose={ closeModal } /> : null}
         <h1>Welcome to Stadia</h1>
       </div>
     )
