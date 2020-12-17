@@ -4,18 +4,17 @@ import StadiaLogo from '../../images/stadia_logo_white.png';
 import ContactsImage from '../../images/envelope.png';
 import ControllerImage from '../../images/games.png';
 import FriendsImage from '../../images/group.png';
-import UserImage from '../../images/user.png';
-
+// import UserImage from '../../images/user.png';
 import './NavBar.css';
-
 import NavBarItem from './NavBarItem';
+
+const images = require.context('../../images', true);
 
 const NavBar = (props) => {
 
-    
     let [isActive, setIsActive] = useState('active');
     let [page, setPage] = useState('Home');
-
+    let picProfile = images('./' + props.loggedUser.userPicture);
     const goHome = () => {
         window.location = '/public/index.html';
     };
@@ -41,11 +40,10 @@ const NavBar = (props) => {
         img: <img src={FriendsImage} alt='friends' onClick={requestModal} id='friends' width="35" height="35" />
       },
       {
-        img: <img src={UserImage} alt='user' onClick={requestModal} id='user' width="30" height="30" />
+        img: <img src={picProfile.default} alt='user' onClick={requestModal} id='user' width="30" height="30" />
+        //img: <img src={UserImage} alt='user' onClick={requestModal} id='user' width="30" height="30" />
       }
     ]
-
-
 
     return(
         <Navbar bg="dark" className='NavBar' expand="lg" sticky="top" variant="pills">

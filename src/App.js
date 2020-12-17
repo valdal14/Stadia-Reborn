@@ -20,6 +20,7 @@ function App(props) {
   const [modalError, setModalError] = useState(null);
   const [pageToShow, setPageToShow]= useState('Home');
   const [isUserLogged, setIsUserLogged] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
 
   const closeModal = ()=> {
     setShowModal(false);
@@ -77,9 +78,16 @@ function App(props) {
       return;
     })
 
-    // logi success
+    // login success
     if(data){
-      console.log(data);
+      // save user data
+      setCurrentUser({
+        username: data[0].username,
+        userPicture: data[0].userPicture,
+        promo: data[0].promo,
+        isProUser: data[0].isProUser
+      });
+      // render the logged in interface
       setIsUserLogged(true);
     } else {
       setModalError('Invalid user credentials, please try again!!!');
@@ -99,8 +107,8 @@ function App(props) {
   if(isUserLogged) {
     return (
       <div className="App">
-        <NavBar changeModalState={ configureModal } changePageRender={pageToRender} />
-        { modalConfigOption !== 'default' && showModal ?  <StadiaModal show={showModal} modalConfiguration={modalConfigOption} handleClose={ closeModal } /> : null}
+        <NavBar changeModalState={ configureModal } changePageRender={pageToRender} loggedUser={currentUser} />
+        { modalConfigOption !== 'default' && showModal ?  <StadiaModal loggedUser={currentUser} show={showModal} modalConfiguration={modalConfigOption} handleClose={ closeModal } /> : null}
         { pageToShow === 'Home' ? <HomePage /> : <Store />}
       </div>
     );
