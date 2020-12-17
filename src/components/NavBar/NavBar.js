@@ -4,7 +4,6 @@ import StadiaLogo from '../../images/stadia_logo_white.png';
 import ContactsImage from '../../images/envelope.png';
 import ControllerImage from '../../images/games.png';
 import FriendsImage from '../../images/group.png';
-// import UserImage from '../../images/user.png';
 import './NavBar.css';
 import NavBarItem from './NavBarItem';
 
@@ -41,7 +40,6 @@ const NavBar = (props) => {
       },
       {
         img: <img src={picProfile.default} alt='user' onClick={requestModal} id='user' width="30" height="30" />
-        //img: <img src={UserImage} alt='user' onClick={requestModal} id='user' width="30" height="30" />
       }
     ]
 
