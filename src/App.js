@@ -20,6 +20,7 @@ const checkIfUserWasLogged = ()=>{
   if(user !== null) {
     defaultUser = {
       username: user.username,
+      email: user.email,
       userPicture: user.userPicture,
       promo: user.promo,
       isProUser: user.isProUser
@@ -99,9 +100,11 @@ function App(props) {
 
     // login success
     if(data){
+      console.log(data);
       // save user data
       setCurrentUser({
         username: data[0].username,
+        email: data[0].email,
         userPicture: data[0].userPicture,
         promo: data[0].promo,
         isProUser: data[0].isProUser

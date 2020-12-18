@@ -31,3 +31,38 @@
     display: block;
     text-align: center;
 }
+
+.currentUser {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+}
+
+.picProfile {
+    max-width: 20%;
+}
+
+.username {
+    font-weight: bold;
+    font-size: 25px;
+    letter-spacing: 0.2em;
+}
+
+.icons {
+    display: inline-block;
+    vertical-align: middle;
+    max-height: 50px;
+}
+
+.optionText {
+    float: left;
+    vertical-align: middle;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.optionText:hover{
+    color: #DDDDDD;
+}

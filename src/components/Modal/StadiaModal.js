@@ -3,6 +3,11 @@ import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './StadiaModal.css';
 import StadiaLogo from '../../images/stadia-logo-white-modal.png'; 
+import ModalLoginSettings from '../../images/settings.png';
+import ModalLoginFeedback from '../../images/comment.png';
+import ModalLoginHelp from '../../images/question.png';
+import ModalLoginOut from '../../images/log-out.png';
+const images = require.context('../../images', true);
 
 const StadiaModal = (props)=> {
 
@@ -19,6 +24,12 @@ const StadiaModal = (props)=> {
       setPassword(e.target.value);
     }
 
+    const logOut = (e)=> {
+      console.log('I was clicked');
+      localStorage.removeItem('StadiaUser');
+      window.location.reload();
+    }
+
     switch (props.modalConfiguration) {
       case 'contact':
         bodyConfig.text = 'Open Contact Modal';
@@ -30,7 +41,64 @@ const StadiaModal = (props)=> {
           bodyConfig.text = 'Open Friends Modal';
           break;
       case 'user':
-        bodyConfig.text = 'Open User Modal';
+        let picProfile = images('./' + props.loggedUser.userPicture);
+        bodyConfig.text = <div className='currentUser'>
+          <img src={picProfile.default} alt='user' className='picProfile' />
+          <p className='username'>{props.loggedUser.username}</p>
+          <p className='username'>{props.loggedUser.email}</p>
+          <hr />
+          <div className='row option'>
+            <div className='col-md-2 col-sm-2'>
+              <div className='icons'>
+                <img src={ModalLoginSettings} alt='settings' />
+              </div>
+            </div>
+            <div className='col-md-10 col-sm-10'>
+              <div className='optionText'>
+                Stadia Settings
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div className='row'>
+            <div className='col-md-2 col-sm-2'>
+              <div className='icons'>
+                <img src={ModalLoginHelp} alt='settings' />
+              </div>
+            </div>
+            <div className='col-md-10 col-sm-10'>
+              <div className='optionText'>
+                Stadia Help
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div className='row'>
+            <div className='col-md-2 col-sm-2'>
+              <div className='icons'>
+                <img src={ModalLoginFeedback} alt='settings' />
+              </div>
+            </div>
+            <div className='col-md-10 col-sm-10'>
+              <div className='optionText'>
+                Stadia Feedback
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div className='row'>
+            <div className='col-md-2 col-sm-2'>
+              <div className='icons'>
+                <img src={ModalLoginOut} alt='settings' />
+              </div>
+            </div>
+            <div className='col-md-10 col-sm-10' onClick={logOut}>
+              <div className='optionText'>
+                Sign out
+              </div>
+            </div>
+          </div>
+        </div>
         break;
       case 'login':
         bodyConfig.text = 
