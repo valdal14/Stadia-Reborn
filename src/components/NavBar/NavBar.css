@@ -87,3 +87,22 @@ a:hover {
     box-sizing: border-box;
     color: rgba(255,255,255,1);
 }
+
+.PRO {
+    font-family: 'Google Sans',sans-serif;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 500;
+    background: #393A3D;
+    display: flex;
+    height: 3rem;
+    border-color: #202124;
+    border-radius: 0.25rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    box-sizing: border-box;
+    color: rgba(255,255,255,1);
+    margin-right: 60px;
+    cursor: pointer;
+}

@@ -4,6 +4,7 @@ import StadiaLogo from '../../images/stadia_logo_white.png';
 import ContactsImage from '../../images/envelope.png';
 import ControllerImage from '../../images/games.png';
 import FriendsImage from '../../images/group.png';
+import ProBannerImage from '../../images/pro.png';
 import './NavBar.css';
 import NavBarItem from './NavBarItem';
 
@@ -14,6 +15,7 @@ const NavBar = (props) => {
     let [isActive, setIsActive] = useState('active');
     let [page, setPage] = useState('Home');
     let picProfile = images('./' + props.loggedUser.userPicture);
+
     const goHome = () => {
         window.location = '/public/index.html';
     };
@@ -57,6 +59,7 @@ const NavBar = (props) => {
           <Form inline>
             {/* <FormControl type="text" placeholder="Search" className="mr-sm-2" />
             <Button variant="outline-success" className='buttonNav'>Search</Button> */}
+            { props.loggedUser.isProUser === 0 ? <div className='PRO'><img src={ProBannerImage} alt='get stadia pro' height="40" /> GET STADIA PRO</div> : null }
             <NavBarItem svgImage={navbarMenuItems[0].img} />
             <NavBarItem svgImage={navbarMenuItems[1].img} />
             <NavBarItem svgImage={navbarMenuItems[2].img} />

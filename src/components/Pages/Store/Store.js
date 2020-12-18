@@ -5,7 +5,7 @@ import Discount from '../../Discount/Discount';
 const Store = (props)=>{
     return(
         <div className='container'>
-            <Discount />
+            { props.loggedUser.promo === 1 ? <Discount /> : null }
         </div>
     )
 }

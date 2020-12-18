@@ -13,14 +13,33 @@ import Store from './components/Pages/Store/Store';
 import NavBarDefault from './components/NavBar/NavBarDefault';
 import Banner from './components/Pages/Anonymous/Banner';
 
+let defaultUser = null;
+
+const checkIfUserWasLogged = ()=>{
+  const user = JSON.parse(localStorage.getItem('StadiaUser'));
+  if(user !== null) {
+    defaultUser = {
+      username: user.username,
+      userPicture: user.userPicture,
+      promo: user.promo,
+      isProUser: user.isProUser
+    };
+    return true;
+  } else {
+    return false;
+  }
+};
+
 function App(props) {
 
   const [showModal, setShowModal] = useState(false);
   const [modalConfigOption, setModalConfigOption] = useState('default');
   const [modalError, setModalError] = useState(null);
   const [pageToShow, setPageToShow]= useState('Home');
-  const [isUserLogged, setIsUserLogged] = useState(false);
-  const [currentUser, setCurrentUser] = useState(null);
+  const [isUserLogged, setIsUserLogged] = useState(checkIfUserWasLogged);
+  const [currentUser, setCurrentUser] = useState(defaultUser);
+
+  
 
   const closeModal = ()=> {
     setShowModal(false);
@@ -109,7 +128,7 @@ function App(props) {
       <div className="App">
         <NavBar changeModalState={ configureModal } changePageRender={pageToRender} loggedUser={currentUser} />
         { modalConfigOption !== 'default' && showModal ?  <StadiaModal loggedUser={currentUser} show={showModal} modalConfiguration={modalConfigOption} handleClose={ closeModal } /> : null}
-        { pageToShow === 'Home' ? <HomePage /> : <Store />}
+        { pageToShow === 'Home' ? <HomePage  loggedUser={currentUser} /> : <Store  loggedUser={currentUser} />}
       </div>
     );
   } else {
