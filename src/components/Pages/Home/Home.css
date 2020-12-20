@@ -1,0 +1,32 @@
+.gamesContainer {
+    width: 80%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+}
+
+.bannerOne{
+    min-height: 33.3%;
+    min-width: 100%;
+    position: relative;
+}
+
+.bannerText {
+    line-height: 1.25rem;
+    font-weight: 500;
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 3;
+    padding: 1rem 0.75rem;
+    color: rgba(255,255,255,.9);
+    text-align: left;
+    background: linear-gradient(to top,rgba(0,0,0,.8),transparent);
+}

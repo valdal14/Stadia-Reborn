@@ -53,13 +53,24 @@ const Home = (props)=>{
     }
 
     return(
-        <div className='container'>
+        <div className='gamesContainer'>
             <div className='row'>
-                <div className='col-md-10 col-sm-12'>
+                <div className='col-md-9 col-sm-12'>
                     { playerGames.length !== 0 ? <img src={ lastGame } alt={playerGames[0].gameName} /> : null }
                 </div>
-                <div className='col-md-2 col-sm-12'>
-
+                <div className='col-md-3 col-sm-12'>
+                    <div className='bannerOne'>
+                        <img src='https://ssl.gstatic.com/stadia/gamers/assets/home-featured-claim-pro-games@2x.webp' alt='Stadia promo' />
+                        <div className='bannerText'>Claim Pro games every month</div>
+                    </div>
+                    <div className='bannerOne'>
+                        <img src='https://ssl.gstatic.com/stadia/gamers/assets/home-featured-news-and-updates@2x.webp' alt='Stadia promo' />
+                        <div className='bannerText'>News and updates</div>
+                    </div>
+                    <div className='bannerOne'>
+                        <img src='https://ssl.gstatic.com/stadia/gamers/assets/home-featured-new-releases-2020-12@2x.webp' alt='Stadia promo' />
+                        <div className='bannerText'>New releases</div>
+                    </div>
                 </div>
             </div>   
         </div>
