@@ -3,6 +3,7 @@ import './Home.css';
 const images = require.context('../../../images/playBanners', true);
 // let picProfile = images('./' + props.loggedUser.userPicture);
 
+
 const Home = (props)=>{
 
     const [playerGames, setPlayerGames] = useState([]);
@@ -56,7 +57,7 @@ const Home = (props)=>{
         <div className='gamesContainer'>
             <div className='row'>
                 <div className='col-md-9 col-sm-12'>
-                    { playerGames.length !== 0 ? <img src={ lastGame } alt={playerGames[0].gameName} /> : null }
+                    { playerGames.length !== 0 ? <img src={ lastGame } alt={playerGames[0].gameName} className='zoom' style={{cursor: 'pointer'}} /> : null }
                 </div>
                 <div className='col-md-3 col-sm-12'>
                     <div className='bannerOne'>
@@ -82,8 +83,8 @@ const Home = (props)=>{
                                 let img = images('./' + game.gameBannerPlay);
                                 let gameImage = img.default; 
                                 return <div className='col-md-4 col-sm-12' key={index}>
-                                    <div className='bannerOne'>
-                                        <img src={ gameImage } alt={game.gameName} height='300px' />
+                                    <div className='bannerGame'>
+                                        <img src={ gameImage } alt={game.gameName} height='300px' className='zoom' />
                                         <div className='bannerText'>{game.gameName}</div>
                                     </div>
                                 </div>

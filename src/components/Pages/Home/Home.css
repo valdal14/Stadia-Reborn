@@ -14,8 +14,15 @@
     cursor: pointer;
 }
 
+.bannerGame{
+    min-height: 33.3%;
+    min-width: 100%;
+    position: relative;
+    cursor: pointer;
+}
+
 .bannerOne:hover{
-    border: 3px;
+    border: 3px solid;
     border-color: #FF773D;
 }
 
@@ -43,3 +50,12 @@
     font-weight: bold;
     color: white;
 }
+
+.zoom {
+    transition: transform .2s; /* Animation */
+    margin: 0 auto;
+  }
+  
+  .zoom:hover {
+    transform: scale(1.02); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
