@@ -11,6 +11,12 @@
     min-height: 33.3%;
     min-width: 100%;
     position: relative;
+    cursor: pointer;
+}
+
+.bannerOne:hover{
+    border: 3px;
+    border-color: #FF773D;
 }
 
 .bannerText {
@@ -29,4 +35,11 @@
     color: rgba(255,255,255,.9);
     text-align: left;
     background: linear-gradient(to top,rgba(0,0,0,.8),transparent);
+}
+
+.library {
+    margin-top: 20px;
+    text-align: left;
+    font-weight: bold;
+    color: white;
 }

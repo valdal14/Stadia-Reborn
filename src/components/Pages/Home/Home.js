@@ -72,7 +72,26 @@ const Home = (props)=>{
                         <div className='bannerText'>New releases</div>
                     </div>
                 </div>
-            </div>   
+            </div>  
+            { playerGames.length > 1 ? 
+                <div className='library'>
+                    <h1>Your library</h1>
+                    <div className='row'>
+                        { playerGames.map((game, index)=> {
+                            if(index !== 0){
+                                let img = images('./' + game.gameBannerPlay);
+                                let gameImage = img.default; 
+                                return <div className='col-md-4 col-sm-12' key={index}>
+                                    <div className='bannerOne'>
+                                        <img src={ gameImage } alt={game.gameName} height='300px' />
+                                        <div className='bannerText'>{game.gameName}</div>
+                                    </div>
+                                </div>
+                            }
+                        })}
+                    </div>
+                </div> 
+            : null} 
         </div>
     )
 }
