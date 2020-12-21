@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Home.css';
 const images = require.context('../../../images/playBanners', true);
-// let picProfile = images('./' + props.loggedUser.userPicture);
-
 
 const Home = (props)=>{
 

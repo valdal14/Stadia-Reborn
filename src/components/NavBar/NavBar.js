@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navbar, Nav, Image, Form, FormControl, Button } from 'react-bootstrap';
+import { Navbar, Nav, Image, Form } from 'react-bootstrap';
 import StadiaLogo from '../../images/stadia_logo_white.png';
 import ContactsImage from '../../images/envelope.png';
 import ControllerImage from '../../images/games.png';
