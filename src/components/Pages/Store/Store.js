@@ -80,7 +80,7 @@ const Store = (props)=>{
                         <Card.Text>
                         {trimDesc(game.gameDescription)}
                         </Card.Text>
-                        { game.username !== user.username ? <Button variant="warning">Euro {game.gamePrice}</Button> : null }
+                        { game.username !== user.username ? <Button variant="warning">€ {game.gamePrice}</Button> : null }
                         <Card.Title>
                             {/* { game.username === user.username ? <Badge variant="success">Purchased</Badge> : null } */}
                             { game.username === user.username ? <Button variant="success" disabled>Purchased</Button> : null }

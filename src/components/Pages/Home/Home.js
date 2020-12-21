@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Home.css';
+import PlayButton from '../../../images/play-button.png';
 const images = require.context('../../../images/playBanners', true);
+
 
 const Home = (props)=>{
 
@@ -55,7 +57,12 @@ const Home = (props)=>{
         <div className='gamesContainer'>
             <div className='row'>
                 <div className='col-md-9 col-sm-12'>
+                    <div className='latestGame'>
                     { playerGames.length !== 0 ? <img src={ lastGame } alt={playerGames[0].gameName} className='zoom' style={{cursor: 'pointer'}} /> : null }
+                    </div>
+                    <div className='playGame'>
+                        <img src={PlayButton}  alt='play' />
+                    </div>
                 </div>
                 <div className='col-md-3 col-sm-12'>
                     <div className='bannerOne'>
