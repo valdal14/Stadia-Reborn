@@ -60,10 +60,24 @@ const Store = (props)=>{
         }
     }
 
+    const showSearchedGame = (g, value)=> {
+        // temp save the previous state
+        if(value === 'Invalid request'){
+            getGames();
+            return;
+        }
+
+        if(value.length === 0) {
+            getGames();
+        } else {
+            setAllGames(g);
+        }
+    }
+
     return(
         <div className='container'>
             { props.loggedUser.promo === 1 ? <Discount /> : null }
-            <Search />
+            <Search searchedGame={showSearchedGame}/>
             <div className='row'>
             { allGames.length > 0 ? 
                allGames.map((game, index) => {
