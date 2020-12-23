@@ -20,6 +20,7 @@ const Store = (props)=>{
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
+                endpoint: 'games',
                 username: user.username
             }),
             }).then(response => {

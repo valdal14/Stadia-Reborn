@@ -22,6 +22,7 @@ const Home = (props)=>{
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
+                endpoint: 'ownedgames',
                 username: user.username
             }),
             }).then(response => {

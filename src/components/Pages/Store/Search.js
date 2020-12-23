@@ -14,6 +14,7 @@ const Search = (props)=>{
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
+                endpoint: 'searchgames',
                 gameTitle: e.target.value
             }),
         }).then(response =>{

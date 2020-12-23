@@ -76,6 +76,7 @@ function App(props) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        endpoint: 'login',
         username: username,
         password: password
       })
