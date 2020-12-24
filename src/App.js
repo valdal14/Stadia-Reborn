@@ -12,6 +12,7 @@ import Store from './components/Pages/Store/Store';
 // Anonymous
 import NavBarDefault from './components/NavBar/NavBarDefault';
 import Banner from './components/Pages/Anonymous/Banner';
+import MoreGamesBanner from './components/Pages/Anonymous/MoreGamesBanner';
 
 let defaultUser = null;
 
@@ -141,7 +142,7 @@ function App(props) {
         <NavBarDefault changeModalState={ openLoginModal } />
         <Banner changeModalState={ openLoginModal } />
         { modalConfigOption !== 'default' && showModal ?  <StadiaModal loginError={modalError} performLogin={login} show={showModal} modalConfiguration={modalConfigOption} handleClose={ closeModal } /> : null}
-        <h1>Welcome to Stadia</h1>
+        <MoreGamesBanner />
       </div>
     )
   }

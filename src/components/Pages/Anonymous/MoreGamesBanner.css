@@ -1,0 +1,31 @@
+.gamesBannerText {
+    color: black;
+    font-weight: bold;
+}
+
+.discountBannerText {
+    color: #de3334;
+    margin-bottom: 20px;
+}
+
+.instantPlayBigText {
+    color: black;
+    text-align: left;
+}
+.instantPlayText {
+    text-align: justify;
+    color: black;
+}
+
+.gameImage {
+    margin-bottom: 10px;
+}
+
+.footerText {
+    font-size: 12px;
+    cursor: pointer;
+    display: block;
+    color: #de3334;
+    margin-bottom: 20px;
+    text-align: left;
+}
