@@ -121,12 +121,8 @@ function App(props) {
   }
 
   useEffect(() => {
-    if(isUserLogged) {
-      document.querySelector('#body').style.backgroundColor = '#202124';
-    } else {
-      document.querySelector('#body').style.backgroundColor = 'white';
-    }
-  });
+    isUserLogged ? document.querySelector('#body').style.backgroundColor = '#202124' : document.querySelector('#body').style.backgroundColor = 'white'
+  },[isUserLogged]);
 
   if(isUserLogged) {
     return (
